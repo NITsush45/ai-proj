@@ -1,0 +1,7 @@
+# powershell
+cd c:\Users\Sushant Kumar\Desktop\centralign
+git init
+git add .
+git commit -m "Prototype: autonomous AI task worker (invoice to ERP)"
+gh repo create centralign-worker --public --source=. --push
+# then add the repo URL to your submission form

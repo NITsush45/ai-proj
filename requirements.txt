@@ -1,0 +1,5 @@
+# Core worker needs ONLY stdlib (works offline, no install).
+# Optional extras for web UI + tests:
+#   pip install fastapi "uvicorn[standard]" pyyaml pytest
+
+

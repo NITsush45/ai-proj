@@ -1,0 +1,6 @@
+DEMO VIDEO SCRIPT (~90 sec)
+0-10s: show data/erp.json empty, data/inbox/ 4 files.
+10-40s: run `python demo.py`. Narrate plan: inbox.search -> invoice.parse -> erp.book -> verifier.
+40-60s: show updated erp.json (ACME-2026-10-131 $7310.75), runs/demo/summary.md + ledger.jsonl.
+60-80s: generalization, no code change: `python run.py --task "List all overdue invoices and summarize total due" --auto-approve` -> shows $950+ overdue.
+80-90s: failure recovery: temporarily rename acme_131.json -> agent falls back to browser.open portal; or remove --auto-approve to show human approval gate asking user.

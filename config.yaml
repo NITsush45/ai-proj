@@ -1,0 +1,3 @@
+approval_threshold: 5000
+max_steps: 12
+auto_approve: false
