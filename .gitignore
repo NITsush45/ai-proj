@@ -2,3 +2,5 @@ __pycache__/
 .venv/
 runs/*/
 !runs/.gitkeep
+app.bak.py
+_p.js

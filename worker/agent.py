@@ -100,7 +100,7 @@ class Agent:
                 if self.auto_approve:
                     self.emit(f"Auto-approved: {u.question}")
                 else:
-                    return self._finish(task, False, f"Needs approval: {u.question}", Bryozoan=u.question)
+                    return self._finish(task, False, f"Needs approval: {u.question}", needs_user=u.question)
             obs = self._act_with_retry(step.tool, args)
             _learn(obs, self.mem, step.tool)
             if step.tool == "inbox.search" and obs.success and obs.data:
@@ -161,7 +161,7 @@ class Agent:
         self.emit(f"Summary: {len(over)} overdue, total ${total}")
         return True
 
-    def _finish(self, task, ok, vmsg, Bryozoan=None) -> dict:
+    def _finish(self, task, ok, vmsg, needs_user=None) -> dict:
         facts = self.mem.facts
         summary = (f"Task: {task}\nResult: {'DONE' if ok else 'NOT DONE'}\n"
                    f"Vendor: {facts.get('vendor', '-')}\nAmount: {facts.get('amount', '-')}\n"
@@ -171,5 +171,5 @@ class Agent:
             summary += f"Overdue total: ${facts['summary_total']} across {len(facts.get('overdue', []))} invoices\n"
         (self.run_dir / "summary.md").write_text(summary, encoding="utf-8")
         self.ledger.log({"type": "result", "ok": ok, "summary": summary})
-        return {"ok": ok, "summary": summary, "facts": facts, "needs_user": Bryozoan}
+        return {"ok": ok, "summary": summary, "facts": facts, "needs_user": needs_user}
 

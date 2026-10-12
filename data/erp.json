@@ -1,1 +1,11 @@
-{"entries": []}
+{
+  "entries": [
+    {
+      "vendor": "Acme Corp",
+      "amount": 7310.75,
+      "due_date": "2026-10-25",
+      "invoice_id": "ACME-2026-10-131",
+      "status": "booked"
+    }
+  ]
+}
